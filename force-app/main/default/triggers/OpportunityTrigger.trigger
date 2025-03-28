@@ -13,9 +13,13 @@ trigger OpportunityTrigger on Opportunity (before insert,
         when BEFORE_UPDATE{
             // Question #5
             OpportunityTriggerHandler.validateOpportunityAmount(Trigger.new);
+
+            // Question #7
+            OpportunityTriggerHandler.setPrimaryContactOnOpportunity(Trigger.new);
         }
         when BEFORE_DELETE{
-
+            // Question #6
+            OpportunityTriggerHandler.preventOppDeleteForBankingIndustry(Trigger.old);
         }
         when AFTER_INSERT{
 
